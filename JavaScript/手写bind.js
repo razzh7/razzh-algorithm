@@ -36,7 +36,7 @@ function bar(name, age, sex) {
     console.log(sex);
 }
 bar.prototype.book = 'you dont know js';
-let bindFoo = bar._bind1(foo, 'razzh');
+let bindFoo = bar._bind2(foo, 'razzh');
 // bindFoo('18','man');
 let obj = new bindFoo('18','man');
 console.log(obj.book);
