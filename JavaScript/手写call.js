@@ -5,7 +5,7 @@ Function.prototype._call = function(context,...args) {
 
       if(args) {
         res = context.fn(...args);
-      }else {
+      } else {
         res = context.fn();
       }
 
@@ -27,5 +27,5 @@ function bar(name, age, sex) {
 
 
 // bar._call(foo,'razzh',18,'man')
-bar._call(foo);
-// bar._call(null);
+// bar._call(foo);
+bar._call(null);
