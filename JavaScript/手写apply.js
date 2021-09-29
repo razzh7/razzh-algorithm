@@ -9,6 +9,7 @@ Function.prototype._apply = function(context) {
     res = context.fn();
   }
   
+  delete context.fn;
   return res;
 }
 
