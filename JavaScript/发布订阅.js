@@ -1,29 +1,3 @@
-const _events = {}; //比喻成汽车品牌
-_events.list = []; //花名册，保存各个牌子价格的订阅者
-
-_events.lisener = function(key,fn) {
-    if(!this.list[key]) {
-        this.list[key] = [];
-    }
-    this.list[key].push(fn);
-}
-
-_events.emit = function(...args) {
-    var listArr = this.list,
-        key = [].shift.call(args);
-    listArr[key].forEach(fn => {
-        fn.apply(this, args);
-    })
-}
-
-_events.removeLisener = function(key,fn) {
-    this.list[key].forEach((_fn,index) => {
-        if(_fn === fn) {
-            this.list[key].splice(index, 1);
-        }
-
-    })
-}
 class EventEmitter {
     constructor() {
         this._events = {}; //售楼处
