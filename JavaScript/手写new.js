@@ -1,15 +1,11 @@
 function create() {
-  var obj = new Object();
-  //删除arguments第一个参数，此参数是传进来的构造函数,conFn接收该构造函数
-  var conFn = [].shift.call(arguments);
-  //经典继承 
-  obj.__proto__ = Object.create(conFn.prototype);
-  //执行构造函数,传入arguments
-  var result = conFn.apply(obj,arguments);
-  //判断返回类型，如果result是对象，返回result
-  //若result是undefined返回空对象
-  //若result返回其他类型的值还是要返回空对象
-  return typeof result === 'object' ? result || obj : obj;
+  var obj = new Object(); //创建一个空对象
+  var conFn = [].shift.call(arguments); //删除arguments第一个参数，此参数是传进来的构造函数,conFn接收该构造函数
+  obj.__proto__ = conFn.prototype; //原型链继承
+  var res = conFn.apply(obj,arguments);  //执行构造函数,传入arguments
+  if(typeof res === 'object' || 'function') {
+    return res || obj; //若res是null返回obj
+  }
 }
 
 // TEST
@@ -23,7 +19,8 @@ function bar(name, age, sex) {
   //   sex
   // }
   // return [];
-  return 'str';
+  // return 'str';
+  return null;
 }
 var b = create(bar,'razzh',18,'man');
 // var b = new bar('razzh',18,'man');
